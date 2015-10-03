@@ -29,99 +29,35 @@
     <div class="container">
       <section id="main_content">
         <h2>
-<a id="tifast-pilot" class="anchor" href="#tifast-pilot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Pilot</h2>
+<a id="tifast-snapshot" class="anchor" href="#tifast-snapshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Snapshot</h2>
 
-<p>This tool allows you to manage all important features of Apple TestFlight using your terminal.</p>
+<p>This command is used to create all Screenshots with multi-language for your app.</p>
+
+<p>Before you run <code>tifast snapshot</code> you need to do some configuration.</p>
 
 <ul>
-<li><p><a href="#upload">tifast pilot upload</a></p></li>
-<li><p><a href="#builds">tifast pilot builds</a></p></li>
-<li><p><a href="#add">tifast pilot add</a></p></li>
-<li><p><a href="#export">tifast pilot export</a></p></li>
-<li><p><a href="#import">tifast pilot import</a></p></li>
-<li><p><a href="#find">tifast pilot find</a></p></li>
-<li><p><a href="#list">tifast pilot list</a></p></li>
-<li><p><a href="#remove">tifast pilot remove</a></p></li>
+<li>Profile your app in Xcode (<code>CMD + I</code>), choose <code>Automation</code> and click the Record button on the bottom of the window.</li>
 </ul>
 
-<p><code>pilot</code> uses <a href="https://spaceship.airforce/">spaceship.airforce</a> to interact with iTunes Connect.</p>
+<p><img src="assets/snapshotAutomation.png" alt="assets/snapshotAutomation.png"></p>
 
-<h3>
-<a id="upload" class="anchor" href="#upload" aria-hidden="true"><span class="octicon octicon-link"></span></a>Upload</h3>
+<ul>
+<li><p>This will get you started. Copy the generated code into <code>snapshot.js</code>. Make sure, you leave the import statement on the top.</p></li>
+<li><p>To take a screenshot, use <code>captureLocalizedScreenshot('0-name')</code> on script</p></li>
+</ul>
 
-<p>This will automatically look for an <code>ipa</code> in your <code>dist</code> directory and tries to fetch the login credentials from your <code>tifastlane.cfg</code>.</p>
-
-<pre><code>tifast pilot upload
-</code></pre>
-
-<p>You can also skip the submission of the binary, which means, the <code>ipa</code> file will only be uploaded and not distributed to testers:</p>
-
-<pre><code>tifast pilot upload -s
-</code></pre>
-
-<h3>
-<a id="builds" class="anchor" href="#builds" aria-hidden="true"><span class="octicon octicon-link"></span></a>Builds</h3>
-
-<p>To list all builds for specific application.</p>
-
-<pre><code>tifast pilot builds
-</code></pre>
-
-<h3>
-<a id="add" class="anchor" href="#add" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add</h3>
-
-<p>Adds a new external tester. This will also add an existing tester to an app.</p>
-
-<pre><code>tifast pilot add
-</code></pre>
-
-<h3>
-<a id="export" class="anchor" href="#export" aria-hidden="true"><span class="octicon octicon-link"></span></a>Export</h3>
-
-<p>Exports all external testers to a CSV file</p>
-
-<pre><code>tifast pilot export
-</code></pre>
-
-<h3>
-<a id="import" class="anchor" href="#import" aria-hidden="true"><span class="octicon octicon-link"></span></a>Import</h3>
-
-<p>Create external testers from a CSV file. The file <strong>must</strong> be at <code>appRoot/TiFLPilot/tester_import.csv</code></p>
-
-<pre><code>tifast pilot import
-</code></pre>
+<p>Here's an example of <code>snapshot</code> working:
+<img src="assets/snapshot.gif" alt="assets/snapshot.gif"></p>
 
 <h4>
-<a id="import-tester-csv" class="anchor" href="#import-tester-csv" aria-hidden="true"><span class="octicon octicon-link"></span></a>Import Tester CSV</h4>
+<a id="this-is-the-html-generated-from-snapshot" class="anchor" href="#this-is-the-html-generated-from-snapshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>This is the HTML generated from snapshot</h4>
 
-<p>Here's an example of how the <code>tester_import.csv</code> should look:</p>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// Name, Lastname, Email</span>
-John,Appleseed,appleseed_john@mac.com</pre></div>
+<p><img src="assets/htmlPagePreviewFade.jpg" alt="assets/htmlPagePreviewFade.jpg"></p>
 
 <h3>
-<a id="find" class="anchor" href="#find" aria-hidden="true"><span class="octicon octicon-link"></span></a>Find</h3>
+<a id="snapfile" class="anchor" href="#snapfile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Snapfile</h3>
 
-<p>Find a tester (internal or external) by their email address.</p>
-
-<pre><code>tifast pilot find &lt;tester@email.com&gt;
-</code></pre>
-
-<h3>
-<a id="list" class="anchor" href="#list" aria-hidden="true"><span class="octicon octicon-link"></span></a>List</h3>
-
-<p>Lists all registered testers, both internal and external.</p>
-
-<pre><code>tifast pilot list
-</code></pre>
-
-<h3>
-<a id="remove" class="anchor" href="#remove" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remove</h3>
-
-<p>Remove an external tester by their email address</p>
-
-<pre><code>tifast pilot remove &lt;tester@email.com&gt;
-</code></pre>
+<p>You can customize your <code>Snapfile</code> as you like it. For more options follow the <a href="https://github.com/KrauseFx/snapshot">official documentation of Snapshot</a></p>
       </section>
     </div>
 
