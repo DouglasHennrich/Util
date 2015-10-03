@@ -1,107 +1,244 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
     <title>Util by DouglasHennrich</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Util</h1>
-        <p class="header">Códigos úteis</p>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/DouglasHennrich/Util/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/DouglasHennrich/Util/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/DouglasHennrich/Util">View On GitHub</a></li>
-        </ul>
+    <header>
+      <div class="container">
+        <h1>Util</h1>
+        <h2>Códigos úteis</h2>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/DouglasHennrich">DouglasHennrich</a></p>
+        <section id="downloads">
+          <a href="https://github.com/DouglasHennrich/Util/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/DouglasHennrich/Util/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/DouglasHennrich/Util" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
+    <div class="container">
+      <section id="main_content">
+        <h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-      </header>
-      <section>
-        <h1>
-<a id="util" class="anchor" href="#util" aria-hidden="true"><span class="octicon octicon-link"></span></a>Util</h1>
+<p>Requirements:</p>
 
-<p>Códigos úteis</p>
+<ul>
+<li>Mac OS 10.9 or newer</li>
+<li>Ruby 2.0 or newer (<code>ruby -v</code>)</li>
+<li>Xcode</li>
+</ul>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> fb <span class="pl-k">=</span> Alloy.Globals.FB;
+<p>Additionally, to an Xcode installation, you also need the Xcode command line tools set up.</p>
 
-<span class="pl-c">/*</span>
-<span class="pl-c">@ Refresh Permissions</span>
-<span class="pl-c">*/</span>
-fb.addEventListener(<span class="pl-s"><span class="pl-pds">'</span>tokenUpdated<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">e</span>) {
-    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Updated permissions: <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-c1">JSON</span>.stringify(fb.permissions));
-});
+<pre><code>xcode-select --install
+</code></pre>
 
-<span class="pl-c">/*</span>
-<span class="pl-c">@ Login Listener</span>
-<span class="pl-c">*/</span>
-fb.addEventListener(<span class="pl-s"><span class="pl-pds">'</span>login<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">event</span>){
-    <span class="pl-k">if</span>( <span class="pl-c1">event</span>.success ){
-        <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>login data: <span class="pl-pds">'</span></span>, <span class="pl-c1">event</span>.<span class="pl-c1">data</span>);
-        <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\n</span>===================<span class="pl-cce">\n</span><span class="pl-pds">'</span></span>);
-        <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>login UID: <span class="pl-pds">'</span></span>, <span class="pl-c1">event</span>.uid);
+<h3>
+<a id="fastlane" class="anchor" href="#fastlane" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://fastlane.tools/">Fastlane</a>
+</h3>
 
-        <span class="pl-c">// Refresh Permissions if changed</span>
-        fb.refreshPermissionsFromServer();
+<p>Install the gem and all its dependencies (this might take a few minutes).</p>
 
-        <span class="pl-c">//</span>
-        goMain(<span class="pl-c1">JSON</span>.<span class="pl-c1">parse</span>(<span class="pl-c1">event</span>.<span class="pl-c1">data</span>));
+<pre><code>sudo gem install fastlane --verbose
+</code></pre>
 
-    }<span class="pl-k">else</span>{
-        <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Login Fail: <span class="pl-pds">'</span></span>, <span class="pl-c1">event</span>.error);
-    }
-});
+<p>In case RubyGems has a hard time installing Nokogiri, check out their <a href="http://www.nokogiri.org/tutorials/installing_nokogiri.html">official installation guide</a>.</p>
 
-<span class="pl-c">/*</span>
-<span class="pl-c">@ goMain</span>
-<span class="pl-c">*/</span>
-<span class="pl-k">function</span> <span class="pl-en">goMain</span>(<span class="pl-smi">_user</span>){
-    Alloy.createController(<span class="pl-s"><span class="pl-pds">'</span>main<span class="pl-pds">'</span></span>,{
-        user <span class="pl-k">:</span> _user
-    })
-     .getView()
-      .<span class="pl-c1">open</span>();
-};
+<h3>
+<a id="tifastlane" class="anchor" href="#tifastlane" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifastlane</h3>
 
-<span class="pl-k">if</span> (<span class="pl-c1">OS_ANDROID</span>) {
-    $.<span class="pl-c1">index</span>.fbProxy <span class="pl-k">=</span> Alloy.Globals.Facebook.createActivityWorker({lifecycleContainer<span class="pl-k">:</span> $.<span class="pl-c1">index</span>});
-}
+<pre><code>[sudo] npm install -g tifastlane
+</code></pre>
 
+<p>Now you are ready to get started :D</p>
 
-<span class="pl-k">if</span>( fb.loggedIn ){
-    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Initialize<span class="pl-pds">'</span></span>);
-    fb.authorize();
+<h2>
+<a id="get-started" class="anchor" href="#get-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Started</h2>
 
-}<span class="pl-k">else</span>{
-    Alloy.createController(<span class="pl-s"><span class="pl-pds">'</span>login<span class="pl-pds">'</span></span>)
-     .getView()
-      .<span class="pl-c1">open</span>();
-}
+<p>Inside your app directory, you first need to setup and configure TiFastlane:</p>
 
-<span class="pl-c">/*</span>
-<span class="pl-c">@</span>
-<span class="pl-c">*/</span>
-<span class="pl-c">/*</span>
-<span class="pl-c">@</span>
-<span class="pl-c">*/</span></pre></div>
+<pre><code>tifast setup
+</code></pre>
+
+<p>Once your configuration is set, then you want to initialize your app:</p>
+
+<pre><code>tifast init
+</code></pre>
+
+<p>And then finally when you are ready, you'll want to send your app for review at the App Store:</p>
+
+<pre><code>tifast send
+</code></pre>
+
+<p><strong>It's that easy!</strong></p>
+
+<p>Below you will find full documentation on every step and other tools available to you.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p><code>tifastlane</code> or <code>tifast</code> must be executed from your Titanium App directory. It will automatically read your tiapp.xml to determine your App configuration for all the tools.</p>
+
+<h4>
+<a id="available-commands" class="anchor" href="#available-commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available Commands</h4>
+
+<ul>
+<li><a href="#tifast-setup">tifast setup</a></li>
+<li><a href="#tifast-init">tifast init</a></li>
+<li><a href="#tifast-status">tifast status</a></li>
+<li><a href="#tifast-register">tifast register</a></li>
+<li><a href="#tifast-send">tifast send</a></li>
+<li><a href="#tifast-pem">tifast pem</a></li>
+<li><a href="#tifast-pilot">tifast pilot</a></li>
+<li><a href="#tifast-snapshot">tifast snapshot</a></li>
+</ul>
+
+<h4>
+<a id="cli-help" class="anchor" href="#cli-help" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI Help</h4>
+
+<p>Each of TiFastlane's commands has it's own set of arguments you can use to further control. You can easily look at each avaiable argument with -h, for example:</p>
+
+<p>tifast setup -h</p>
+
+<h3>
+<a id="tifast-setup" class="anchor" href="#tifast-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Setup</h3>
+
+<p>This will configure TiFastlane on your current project.</p>
+
+<pre><code>tifast setup
+</code></pre>
+
+<h3>
+<a id="tifast-init" class="anchor" href="#tifast-init" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Init</h3>
+
+<p>TiFastlane needs to initialize the configuration files needed to keep iTunes Connect updated with the correct information. If the app <strong>is not in iTunes Connect</strong> then run to start fresh settings:</p>
+
+<pre><code>tifast init
+</code></pre>
+
+<p>If your app <strong>is already on iTunes Connect</strong>, then run the wizard which will automatically download all your current metadata and screenshots:</p>
+
+<pre><code>tifast init -s
+</code></pre>
+
+<h3>
+<a id="tifast-status" class="anchor" href="#tifast-status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Status</h3>
+
+<p>You can view the current settings that would be used by running:</p>
+
+<pre><code>tifast status
+</code></pre>
+
+<p>You will see something like this:</p>
+
+<div class="highlight highlight-source-js"><pre>Apple <span class="pl-c1">ID</span> Username<span class="pl-k">:</span> contact@universopositivo.com.br
+Name<span class="pl-k">:</span> Easy Ticket
+AppId<span class="pl-k">:</span> br.com.universopositivo.easyTicket
+Version<span class="pl-k">:</span> <span class="pl-c1">1.0</span>.<span class="pl-c1">0</span>
+CFBundleVersion<span class="pl-k">:</span> <span class="pl-c1">107</span>
+GUID<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>32cc538e-4fd3-4d6e-9999-870ce50ab039<span class="pl-pds">"</span></span>
+SKU<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>xxxxxxxxxxxxxx<span class="pl-pds">"</span></span></pre></div>
+
+<h3>
+<a id="tifast-register" class="anchor" href="#tifast-register" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Register</h3>
+
+<p>Register your Titanium App ID on the Apple Developer Program and iTunes Connect, and then generate the Provisioning Profiles for App Store, Ad Hoc and Development.</p>
+
+<pre><code>tifast register
+</code></pre>
+
+<p>Everything is done behind the scenes using <a href="https://github.com/fastlane/produce">produce</a> and <a href="https://github.com/KrauseFx/sigh">sigh</a>. If the App ID already exists on the Developer Program or iTunes Connect it will be safely skipped.</p>
+
+<p>For default provisiong profiles will be generated for all platforms, but if you wish you can target a single platform: <code>appstore</code>, <code>adhoc</code>, <code>development</code> or leave empty for all.</p>
+
+<pre><code>tifast register &lt;platform&gt;
+</code></pre>
+
+<h3>
+<a id="tifast-send" class="anchor" href="#tifast-send" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Send</h3>
+
+<p>When you have a new version of your App that you wish to push to iTunes Connect, all you have to do is:</p>
+
+<pre><code>tifast send
+</code></pre>
+
+<p>If you want to <strong>Update only Medata and Screenshots</strong>  of your App without having to submit a new version or binary.</p>
+
+<pre><code>tifast send -m
+</code></pre>
+
+<p>If you want to <strong>Upload an Beta version</strong> of your app.</p>
+
+<pre><code>tifast send -t
+</code></pre>
+
+<h3>
+<a id="tifast-pem" class="anchor" href="#tifast-pem" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast PEM</h3>
+
+<p>Generate or rewnew your push certificates by using:</p>
+
+<pre><code>tifast pem [password]
+</code></pre>
+
+<p>For default certificates will be created for distribution using the password you define, if you want to target the development certificates then use:</p>
+
+<pre><code>tifast pem -d [password]
+</code></pre>
+
+<p>To renew push certificate, even if the current one is active for 30 more days</p>
+
+<pre><code>tifast pem -f [password]
+</code></pre>
+
+<h3>
+<a id="tifast-pilot" class="anchor" href="#tifast-pilot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Pilot</h3>
+
+<ul>
+<li><a href="./Pilot.md">Documentation for Pilot</a></li>
+</ul>
+
+<h3>
+<a id="tifast-snapshot" class="anchor" href="#tifast-snapshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tifast Snapshot</h3>
+
+<ul>
+<li><a href="./Snapshot.md">Documentation for Snapshot</a></li>
+</ul>
+
+<h2>
+<a id="configuration-files" class="anchor" href="#configuration-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration Files</h2>
+
+<p>All metadata and screenshots are easily maintained from the <code>TiFLDelivery\APPID</code> directory, here you will find the following files:</p>
+
+<p><strong>Deliveryfile</strong></p>
+
+<p>You can configure Price, Copyright, Developer Notes, etc. You can read the full <a href="https://github.com/KrauseFx/deliver/blob/master/Deliverfile.md">documentation here</a>.</p>
+
+<p><strong>./metadata/[LANG]/*.txt</strong></p>
+
+<p>In this directory you will see several text files with the contents of the metadata that is language dependant.</p>
+
+<h4>
+<a id="available-languages" class="anchor" href="#available-languages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available languages</h4>
+
+<p><code>da</code>, <code>de-DE</code>, <code>el</code>, <code>en-AU</code>, <code>en-CA</code>, <code>en-GB</code>, <code>en-US</code>, <code>es-ES</code>, <code>es-MX</code>, <code>fi</code>, <code>fr-CA</code>, <code>fr-FR</code>, <code>id</code>, <code>it</code>, <code>ja</code>, <code>ko</code>, <code>ms</code>, <code>nl</code>, <code>no</code>, <code>pt-BR</code>, <code>pt-PT</code>, <code>ru</code>, <code>sv</code>, <code>th</code>, <code>tr</code>, <code>vi</code>, <code>zh-Hans</code>, <code>zh-Hant</code></p>
+
+<p><strong>./screenshots/[LANG]/*.</strong>*</p>
+
+<p>As with metadata, screenshots support multi language. Based on the dimension of the images they will be correctly set to the appropiate device. The images are ordered alphabetically, so make sure to name them correctly to control the right display order.</p>
       </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+
+    
   </body>
 </html>
