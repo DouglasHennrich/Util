@@ -1,1 +1,0 @@
-keytool -genkeypair -v -keystore KeyStore -alias appID -keyalg RSA -sigalg SHA1withRSA -validity 10000
